@@ -1,15 +1,29 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import '../style/css/CTA.css';
 
 const CTA = () => {
     return (
         <section className="section cta-section">
             <div className="container">
-                <div className="cta-card">
+                <motion.div 
+                    className="cta-card"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <div className="cta-glow"></div>
                     <h2>Ready to Upgrade Your Support?</h2>
                     <p>Join 500+ companies delivering exceptional voice experiences today.</p>
-                    <button className="btn-white">Get Started Now</button>
-                </div>
+                    <motion.button 
+                        className="btn-white"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        Get Started Now
+                    </motion.button>
+                </motion.div>
             </div>
         </section>
     );

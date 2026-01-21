@@ -170,3 +170,99 @@
     justify-content: center;
   }
 }
+
+/* Existing Hero base update */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: #000309; /* Solid Dark Theme */
+    min-height: 100vh;
+}
+
+/* --- NEW: Interactive Spotlight Styling --- */
+.mouse-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+        circle, 
+        rgba(175, 103, 243, 0.363) 0%, /* Purple Center */
+        rgba(7, 6, 27, 0.397) 40%,  /* Indigo Edge */
+        transparent 10%
+    );
+    border-radius: 30%;
+    pointer-events: none;
+    transform: translate(-50%, -50%); /* Centering on mouse cursor */
+    z-index: 0;
+    filter: blur(80px);
+    mix-blend-mode: screen; /* Content ke saath attractive blend */
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2; /* Content always on top of glow */
+}
+
+/* Gradient Text to match Purple theme */
+.text-gradient {
+    background: linear-gradient(135deg, #fff 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* --- SMOKE ANIMATION STYLING --- */
+.smoke-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Mouse glow (z-index 2) ke peeche rahega */
+    pointer-events: none;
+    opacity: 0.6; /* Halka rakha hai taaki professional lage */
+}
+
+.smoke {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+    filter: blur(100px);
+    border-radius: 50%;
+}
+
+.smoke-1 {
+    top: -20%;
+    left: -10%;
+    animation: smokeDrift 20s infinite alternate linear;
+}
+
+.smoke-2 {
+    bottom: -10%;
+    right: -10%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+    animation: smokeDrift 25s infinite alternate-reverse ease-in-out;
+}
+
+.smoke-3 {
+    top: 30%;
+    left: 40%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(192, 38, 211, 0.05) 0%, transparent 70%);
+    animation: smokeDrift 15s infinite alternate linear;
+}
+
+@keyframes smokeDrift {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(100px, 50px) scale(1.15); }
+    100% { transform: translate(-50px, 100px) scale(0.9); }
+}
+
+/* Mouse Glow positioning check */
+.mouse-glow {
+    z-index: 2; /* Content ke niche par smoke ke upar */
+}
+
+.hero-container {
+    z-index: 10; /* Content sabse upar */
+}
