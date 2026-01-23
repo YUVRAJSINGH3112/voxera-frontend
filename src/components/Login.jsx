@@ -23,7 +23,7 @@ const Login = () => {
             <div className="auth-card">
                 <div className="auth-header">
                     <h2>Welcome Back</h2>
-                    <p>Log in to your VoiceAI dashboard.</p>
+                    <p>Log in to your account.</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="auth-form">

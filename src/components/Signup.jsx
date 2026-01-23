@@ -63,12 +63,16 @@ const Signup = () => {
                                 value={formData.industry}
                                 onChange={handleChange}
                                 required
+                                className={formData.industry ? "has-value" : ""}
                             >
-                                <option value="" disabled>Select Industry</option>
+                                <option value="" disabled hidden>
+                                    Select Industry
+                                </option>
                                 {industries.map(ind => (
                                     <option key={ind} value={ind}>{ind}</option>
                                 ))}
                             </select>
+
                         </div>
                     </div>
 

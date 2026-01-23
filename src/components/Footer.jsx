@@ -6,7 +6,12 @@ import '../style/css/Footer.css';
 const Footer = () => {
     const footerLinks = {
         product: ["Features", "Integrations", "Pricing", "Security"],
-        company: ["About Us", "Careers", "Blog", "Contact"],
+        company: [
+             { label: "About", link: "/about" },
+             { label: "Careers", link: "/careers" },
+             { label: "Blog", link: "/blog" },
+             { label: "Contact", link: "/contact" }
+                 ],
         connect: [
             { name: "Twitter", icon: <Twitter size={16} /> },
             { name: "LinkedIn", icon: <Linkedin size={16} /> },
@@ -27,7 +32,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                     >
                         <a href="/" className="logo">
-                            <span className="logo-icon"><AudioLines size={20} /></span> VoiceAI
+                            <span className="logo-icon"><AudioLines size={20} /></span> Voxera
                         </a>
                         <p>Empowering businesses with the next generation of conversational AI agents.</p>
                         <div className="social-links">
@@ -57,8 +62,16 @@ const Footer = () => {
                         <h4>Company</h4>
                         <ul>
                             {footerLinks.company.map((item, i) => (
-                                <li key={i}><motion.a href="#" whileHover={{ x: 5 }}>{item}</motion.a></li>
+                                <li key={i}>
+                                    <motion.a
+                                        href={item.link}
+                                        whileHover={{ x: 5 }}
+                                    >
+                                        {item.label}
+                                     </motion.a>
+                                 </li>
                             ))}
+
                         </ul>
                     </div>
 
@@ -73,7 +86,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>&copy; 2026 VoiceAI Inc. Built with ❤️ for the future.</p>
+                    <p>&copy; 2026 Voxera Inc. Built with ❤️ for the future.</p>
                     <div className="footer-legal">
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms of Service</a>

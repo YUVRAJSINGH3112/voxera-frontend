@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from './Hero';
 import Features from './Features';
 import Stats from './Stats';
+import Pricing from './Pricing';
 import CTA from './CTA';
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
             <Hero />
             <Features />
             <Stats />
+            <Pricing />
             <CTA />
         </>
     );

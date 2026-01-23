@@ -67,8 +67,8 @@ const Hero = () => {
                     animate="visible"
                 >
                     <motion.h1 variants={fadeInUp}>
-                        Humanize Support <br />
-                        with <span className="text-gradient">Intelligent Voice</span>
+                    AI voice & chat layer <br />
+                        for <span className="text-gradient"> modern businesses.</span>
                     </motion.h1>
 
                     <motion.p className="hero-subtitle" variants={fadeInUp}>
@@ -137,7 +137,7 @@ const Hero = () => {
                                 animate={{ opacity: [1, 0.4, 1] }}
                                 transition={{ duration: 1.5, repeat: Infinity }}
                             ></motion.span> 
-                            AI Voice Visualization
+                            AI-Powered Conversations
                         </div>
                     </motion.div>
                 </motion.div>

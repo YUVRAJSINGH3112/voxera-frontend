@@ -1,10 +1,8 @@
 .hero {
-  margin-top: calc(var(--header-height) * -1);
   padding-top: calc(var(--header-height) + 60px);
   padding-bottom: 80px;
-  position: relative;
   overflow: hidden;
-  min-height: 90vh; /* Fill most of the screen */
+  height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -27,7 +25,7 @@
 }
 
 .hero-subtitle {
-  font-size: 1rem; /* Reduced from 1.125rem */
+  font-size: 0.9rem; /* Reduced from 1.125rem */
   color: var(--text-muted);
   max-width: 480px;
   margin-bottom: 2rem;

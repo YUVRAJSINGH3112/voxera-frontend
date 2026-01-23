@@ -15,7 +15,7 @@ const CTA = () => {
                 >
                     <div className="cta-glow"></div>
                     <h2>Ready to Upgrade Your Support?</h2>
-                    <p>Join 500+ companies delivering exceptional voice experiences today.</p>
+                    <p>Be among the first to deliver exceptional AI-powered voice experiences.</p>
                     <motion.button 
                         className="btn-white"
                         whileHover={{ scale: 1.05 }}
