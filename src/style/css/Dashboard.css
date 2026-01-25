@@ -1,229 +1,139 @@
-.dashboard-container {
-    display: flex;
-    min-height: 100vh;
-    background: #020817;
-    color: #fff;
-    padding-top: 2rem;
+/* ===== Dashboard Base ===== */
+.dash-container {
+  min-height: 100vh;
+  padding: 48px 64px;
+  background: #0b0f14; /* dark background */
+  color: #eaeaea;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Sidebar Styling */
-.sidebar {
-    width: 260px;
-    background: rgba(255, 255, 255, 0.02);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
+.dash-container h1,
+.dash-container h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-.sidebar-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
+.subtitle {
+  color: #9aa4b2;
+  margin-bottom: 32px;
+  font-size: 15px;
 }
 
-.logo-box {
-    background: #00d4ff;
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    color: #000;
+/* ===== Grid Layout ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+/* ===== Card ===== */
+.card {
+  background: linear-gradient(
+    180deg,
+    #111827,
+    #0f172a
+  );
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0.8rem 1rem;
-    border-radius: 12px;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: 0.3s;
+.card h3 {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
-.nav-item:hover, .nav-item.active {
-    background: rgba(0, 212, 255, 0.1);
-    color: #00d4ff;
+.card p {
+  font-size: 14px;
+  color: #9ca3af;
+  line-height: 1.5;
 }
 
-/* Main Content Styling */
-.main-content {
-    flex: 1;
-    padding: 2rem 3rem;
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #3b82f6;
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
 }
 
-.dash-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
+/* ===== Buttons ===== */
+.primary-btn {
+  margin-top: 24px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  border: none;
+  color: white;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.search-bar {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0.6rem 1.2rem;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 350px;
+.primary-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-.search-bar input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    outline: none;
-    width: 100%;
+/* ===== Textarea / Inputs ===== */
+textarea,
+input[type="text"] {
+  width: 100%;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  padding: 14px;
+  color: #e5e7eb;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 160px;
 }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+textarea::placeholder {
+  color: #64748b;
 }
 
-.notification-bell {
-    position: relative;
-    cursor: pointer;
+textarea:focus,
+input:focus {
+  outline: none;
+  border-color: #3b82f6;
 }
 
-.pulse-dot {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 8px;
-    background: #ff4d4d;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #ff4d4d;
-    animation: pulse 1.5s infinite;
+/* ===== Code Snippet ===== */
+.code-box {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+  font-size: 13px;
+  color: #e5e7eb;
+  overflow-x: auto;
+  line-height: 1.6;
 }
 
-/* Stats Cards */
-.stats-grid-dash {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
+/* ===== Success Screen ===== */
+.success-title {
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
-.stat-card-dash {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    border-radius: 20px;
-    position: relative;
+.success-sub {
+  color: #94a3b8;
+  margin-bottom: 24px;
 }
 
-.stat-card-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-}
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .dash-container {
+    padding: 32px 20px;
+  }
 
-.stat-icon-wrapper {
-    background: rgba(0, 212, 255, 0.1);
-    color: #00d4ff;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.stat-grow {
-    color: #10b981;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.stat-card-body h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.2rem;
-}
-
-.stat-card-body p {
-    color: #94a3b8;
-    font-size: 0.9rem;
-}
-
-.card-progress-bg {
-    height: 4px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 2px;
-    margin-top: 1.5rem;
-    overflow: hidden;
-}
-
-.card-progress-fill {
-    height: 100%;
-    background: #00d4ff;
-    box-shadow: 0 0 10px #00d4ff;
-}
-
-/* Live Chart Mockup */
-.live-chart-container {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2rem;
-    border-radius: 24px;
-    margin-top: 2rem;
-}
-
-.chart-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-}
-
-.live-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 77, 77, 0.1);
-    color: #ff4d4d;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-
-.live-dot {
-    width: 6px;
-    height: 6px;
-    background: #ff4d4d;
-    border-radius: 50%;
-    animation: blink 1s infinite;
-}
-
-.mock-chart {
-    height: 180px;
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-}
-
-.chart-bar-dash {
-    flex: 1;
-    background: linear-gradient(180deg, #00d4ff 0%, rgba(0, 212, 255, 0.1) 100%);
-    border-radius: 4px 4px 0 0;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(2.5); opacity: 0; }
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }

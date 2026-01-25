@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Mail, Lock, Building2, Briefcase, ArrowRight } from 'lucide-react';
 import '../style/css/Signup.css';
 
 const Signup = () => {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
-        businessName: '',
+        name: '',
         industry: ''
     });
 
@@ -25,9 +28,24 @@ const Signup = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+        console.log(formData);
+        try {
+            const res = await axios.post(
+                "http://localhost:8000/auth/register",
+                formData,
+                { withCredentials: true } 
+            );
+
+            console.log(res.data);
+
+            navigate("/dashboard");
+
+        } catch (error) {
+            console.error(error.response?.data || error.message);
+            alert(error.response?.data?.message || "Signup failed");
+        }
     };
 
     return (
@@ -39,15 +57,15 @@ const Signup = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="auth-form">
+
                     <div className="form-group">
                         <label>Business Name</label>
                         <div className="input-wrapper">
                             <Building2 size={18} className="input-icon" />
                             <input
                                 type="text"
-                                name="businessName"
-                                placeholder="Acme Corp"
-                                value={formData.businessName}
+                                name="name"
+                                value={formData.name}
                                 onChange={handleChange}
                                 required
                             />
@@ -63,16 +81,12 @@ const Signup = () => {
                                 value={formData.industry}
                                 onChange={handleChange}
                                 required
-                                className={formData.industry ? "has-value" : ""}
                             >
-                                <option value="" disabled hidden>
-                                    Select Industry
-                                </option>
+                                <option value="" disabled>Select Industry</option>
                                 {industries.map(ind => (
                                     <option key={ind} value={ind}>{ind}</option>
                                 ))}
                             </select>
-
                         </div>
                     </div>
 
@@ -83,7 +97,6 @@ const Signup = () => {
                             <input
                                 type="email"
                                 name="email"
-                                placeholder="name@company.com"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
@@ -98,7 +111,6 @@ const Signup = () => {
                             <input
                                 type="password"
                                 name="password"
-                                placeholder="••••••••"
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
@@ -112,7 +124,7 @@ const Signup = () => {
                 </form>
 
                 <div className="auth-footer">
-                    <p>Already have an account? <Link to="/login" className="auth-link">Log In</Link></p>
+                    <p>Already have an account? <Link to="/login">Log In</Link></p>
                 </div>
             </div>
         </div>
