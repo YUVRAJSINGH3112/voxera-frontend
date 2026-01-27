@@ -17,7 +17,7 @@ const CTA = () => {
                     <h2>Ready to Upgrade Your Support?</h2>
                     <p>Be among the first to deliver exceptional AI-powered voice experiences.</p>
                     <motion.button 
-                        className="btn-white"
+                        className="cta-btn"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >

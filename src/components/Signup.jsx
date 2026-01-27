@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Mail, Lock, Building2, Briefcase, ArrowRight } from 'lucide-react';
 import '../style/css/Signup.css';
+import { useAuth } from "../AuthContext"
 
 const Signup = () => {
     const navigate = useNavigate();
+    const { refreshAuth } = useAuth()
 
     const [formData, setFormData] = useState({
         email: '',
@@ -38,7 +40,7 @@ const Signup = () => {
                 { withCredentials: true } 
             );
 
-            console.log(res.data);
+            await refreshAuth();
 
             navigate("/dashboard");
 
@@ -68,6 +70,7 @@ const Signup = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
+                                placeholder='Business Name'
                             />
                         </div>
                     </div>
@@ -81,6 +84,7 @@ const Signup = () => {
                                 value={formData.industry}
                                 onChange={handleChange}
                                 required
+                                placeholder='Industry'
                             >
                                 <option value="" disabled>Select Industry</option>
                                 {industries.map(ind => (
@@ -100,6 +104,7 @@ const Signup = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
+                                placeholder='Work Email'
                             />
                         </div>
                     </div>
@@ -114,6 +119,7 @@ const Signup = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
+                                placeholder='Password'
                             />
                         </div>
                     </div>

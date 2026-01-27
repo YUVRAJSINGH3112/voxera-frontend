@@ -80,8 +80,7 @@
 }
 
 /* ===== Textarea / Inputs ===== */
-textarea,
-input[type="text"] {
+.knowledge-textarea{
   width: 100%;
   background: #020617;
   border: 1px solid #1e293b;

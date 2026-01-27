@@ -3,14 +3,13 @@ import "../style/css/About.css";
 
 const About = () => {
   return (
-    <section className="about-section">
+    <section className="about-section" id="about">
       <div className="about-container">
-        {/* Intro */}
+
+        {/* Header */}
         <span className="about-badge">About Voxera</span>
 
-        <h2 className="about-title">
-          Conversations That Convert
-        </h2>
+        <h2 className="about-title">Conversations That Convert</h2>
 
         <p className="about-description">
           Voxera is an AI-powered conversational platform built to transform how
@@ -53,7 +52,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Founders Section */}
+        {/* Founders */}
         <div className="founders-section">
           <h3 className="founders-title">Meet the Team</h3>
 
@@ -68,10 +67,8 @@ const About = () => {
               <h4>Yuvraj Singh</h4>
               <span>Co-Founder & Developer</span>
               <p>
-                AI and full-stack developer with a strong focus on building
-                intelligent systems, scalable architectures, and clean user
-                experiences. Actively working on conversational AI, automation,
-                and modern web technologies.
+                AI and full-stack developer focused on intelligent systems,
+                scalable architectures, and clean user experiences.
               </p>
             </div>
 
@@ -79,13 +76,13 @@ const About = () => {
               <h4>Yogesh</h4>
               <span>Co-Founder</span>
               <p>
-                Focused on product vision, execution, and building solutions
-                that align technology with real business use-cases. Plays a key
-                role in shaping Voxera’s direction and growth.
+                Drives product vision and execution, aligning AI technology with
+                real-world business needs.
               </p>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import "../../style/css/Dashboard.css";
 
 const RagKnowledge = () => {
   const { botType } = useParams();
+  console.log(botType);
   const navigate = useNavigate();
 
   const [text, setText] = useState("");
@@ -20,20 +21,19 @@ const RagKnowledge = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:8000/bot/create/rag",
+        `http://localhost:8000/${botType}/create/rag`,
         {
           botType,
-          knowledge: text,
+          knowledgeBase: text,
         },
         { withCredentials: true }
       );
-
       navigate("/dashboard/bot-created", {
-        state: { code: res.data.embedCode },
+        state: { code: res.data.botId},
       });
 
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
       alert("Failed to create bot");
     } finally {
       setLoading(false);
@@ -51,6 +51,7 @@ const RagKnowledge = () => {
         placeholder="Paste your knowledge here..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        className="knowledge-textarea"
       />
 
       {/* CTA Button */}

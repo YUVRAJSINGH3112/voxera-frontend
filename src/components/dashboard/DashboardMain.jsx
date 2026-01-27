@@ -11,9 +11,9 @@ import {
     TrendingUp,
     Activity
 } from 'lucide-react';
-import '../style/css/Dashboard.css';
+import '../../style/css/DashboardMain.css';
 
-const Dashboard = () => {
+const DashboardMain = () => {
     const stats = [
         { label: "Total Minutes", value: "12,840", grow: "+12%", icon: <Mic2 size={20} /> },
         { label: "Active Agents", value: "84", grow: "+5%", icon: <Activity size={20} /> },
@@ -142,4 +142,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default DashboardMain;

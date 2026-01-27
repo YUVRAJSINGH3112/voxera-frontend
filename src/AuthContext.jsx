@@ -6,27 +6,40 @@ const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [hasBots, setHasBots] = useState(false)
+
+  const checkAuth = async () => {
+    try {
+      setLoading(true);
+
+      const res = await axios.get(
+        "http://localhost:8000/auth/me",
+        { withCredentials: true }
+      );
+
+      setUser(res.data);
+
+      const botRes = await axios.get(
+        "http://localhost:8000/chatbot/get/bots",
+        { withCredentials: true }
+      );
+
+      setHasBots((botRes.data.bots || []).length > 0);
+    } catch (err) {
+      setUser(null);
+      setHasBots(false);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:8000/auth/me",
-          { withCredentials: true }
-        )
-        setUser(res.data)
-      } catch (err) {
-        setUser(null)
-      } finally {
-        setLoading(false)
-      }
-    }
+    checkAuth();
+  }, []);
 
-    checkAuth()
-  }, [])
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ user, setUser, loading, hasBots,refreshAuth: checkAuth }}>
       {children}
     </AuthContext.Provider>
   )

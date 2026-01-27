@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import '../style/css/Hero.css';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
     // --- EXISTING: Mouse Tracking Logic ---
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
-
+    const navigate = useNavigate();
     const springConfig = { damping: 25, stiffness: 150 };
     const dx = useSpring(mouseX, springConfig);
     const dy = useSpring(mouseY, springConfig);
@@ -67,13 +68,12 @@ const Hero = () => {
                     animate="visible"
                 >
                     <motion.h1 variants={fadeInUp}>
-                    AI voice & chat layer <br />
-                        for <span className="text-gradient"> modern businesses.</span>
+                    Build Intelligent Chatbots & Voice Agents in <br />
+                        <span className="text-gradient"> One Line of Code</span>
                     </motion.h1>
 
                     <motion.p className="hero-subtitle" variants={fadeInUp}>
-                        Deploy AI voice agents that understand emotion, context, and intent.
-                        Reduce wait times by 90% and increase customer satisfaction instantly.
+                        AI-powered chatbots and voicebots that plug into your product instantly — no complex setup, no heavy engineering.
                     </motion.p>
 
                     <motion.div className="hero-actions" variants={fadeInUp}>
@@ -90,8 +90,9 @@ const Hero = () => {
                             className="btn-secondary-lg"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => navigate('/docs')}
                         >
-                            <span className="play-icon">▶</span> Listen to Demo
+                            <span className="play-icon">▶</span> View Docs
                         </motion.button>
                     </motion.div>
                 </motion.div>
