@@ -32,16 +32,14 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
         try {
             const res = await axios.post(
                 "https://voxera-backend-4cga.onrender.com/auth/register",
                 formData,
-                { withCredentials: true } 
             );
-
+            localStorage.setItem("token", res.data.token);
+            alert("Signup successful");
             await refreshAuth();
-
             navigate("/dashboard");
 
         } catch (error) {
