@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../style/css/Dashboard.css";
+import {useAuth} from "../../AuthContext"
 
 const RagKnowledge = () => {
+  const {refreshAuth} = useAuth();
   const { botType } = useParams();
   console.log(botType);
   const navigate = useNavigate();
@@ -21,13 +23,14 @@ const RagKnowledge = () => {
       setLoading(true);
 
       const res = await axios.post(
-        `http://localhost:8000/${botType}/create/rag`,
+        `https://voxera-backend-4cga.onrender.com/${botType}/create/rag`,
         {
           botType,
           knowledgeBase: text,
         },
         { withCredentials: true }
       );
+      refreshAuth();
       navigate("/dashboard/bot-created", {
         state: { code: res.data.botId},
       });

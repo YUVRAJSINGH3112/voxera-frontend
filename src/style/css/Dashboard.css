@@ -1,132 +1,177 @@
-/* ===== Dashboard Base ===== */
+/* ================= DASHBOARD BASE ================= */
 .dash-container {
   min-height: 100vh;
   padding: 48px 64px;
-  background: #0b0f14; /* dark background */
-  color: #eaeaea;
+  background: #000;
+  color: #e5e7eb;
   font-family: 'Inter', sans-serif;
 }
 
 .dash-container h1,
 .dash-container h2 {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
 }
 
 .subtitle {
-  color: #9aa4b2;
-  margin-bottom: 32px;
-  font-size: 15px;
+  color: #94a3b8;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
-/* ===== Grid Layout ===== */
+/* ================= GRID ================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  gap: 1.4rem;
 }
 
-/* ===== Card ===== */
+/* ================= CARD ================= */
 .card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 26px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.45s ease;
+}
+
+/* Scan-line */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -100%;
   background: linear-gradient(
-    180deg,
-    #111827,
-    #0f172a
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.15),
+    transparent
   );
-  border: 1px solid #1f2937;
-  border-radius: 14px;
-  padding: 28px;
+  transition: 0.8s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 212, 255, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Card text */
+.card h3 {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 13.5px;
+  color: #94a3b8;
+  line-height: 1.55;
+}
+
+/* ================= BUTTON ================= */
+.primary-btn {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #0f172a, #020617);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  color: #e5e7eb;
+  padding: 0.55rem 1.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-.card h3 {
-  margin-top: 14px;
-  margin-bottom: 6px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.card p {
-  font-size: 14px;
-  color: #9ca3af;
-  line-height: 1.5;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #3b82f6;
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-}
-
-/* ===== Buttons ===== */
-.primary-btn {
-  margin-top: 24px;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
-  border: none;
-  color: white;
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
 .primary-btn:hover {
-  opacity: 0.9;
+  background: #020617;
+  border-color: rgba(0, 212, 255, 0.45);
+  color: #00d4ff;
   transform: translateY(-2px);
 }
 
-/* ===== Textarea / Inputs ===== */
-.knowledge-textarea{
+.primary-btn:active {
+  transform: scale(0.96);
+}
+
+/* ================= INPUTS / TEXTAREA ================= */
+.knowledge-textarea {
   width: 100%;
-  background: #020617;
-  border: 1px solid #1e293b;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
   padding: 14px;
+
   color: #e5e7eb;
-  font-size: 14px;
+  font-size: 13.5px;
   resize: vertical;
   min-height: 160px;
 }
 
-textarea::placeholder {
+textarea::placeholder,
+input::placeholder {
   color: #64748b;
 }
 
 textarea:focus,
 input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: rgba(0, 212, 255, 0.45);
 }
 
-/* ===== Code Snippet ===== */
+/* ================= CODE BOX ================= */
 .code-box {
-  background: #020617;
-  border: 1px solid #1e293b;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   padding: 20px;
   margin-top: 24px;
+
   font-size: 13px;
   color: #e5e7eb;
   overflow-x: auto;
   line-height: 1.6;
 }
 
-/* ===== Success Screen ===== */
+/* ================= SUCCESS ================= */
 .success-title {
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
 }
 
 .success-sub {
   color: #94a3b8;
   margin-bottom: 24px;
+  font-size: 14px;
 }
 
-/* ===== Responsive ===== */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .dash-container {
     padding: 32px 20px;

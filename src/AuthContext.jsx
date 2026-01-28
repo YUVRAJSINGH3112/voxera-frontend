@@ -13,14 +13,14 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:8000/auth/me",
+        "https://voxera-backend-4cga.onrender.com/auth/me",
         { withCredentials: true }
       );
 
       setUser(res.data);
 
       const botRes = await axios.get(
-        "http://localhost:8000/chatbot/get/bots",
+        "https://voxera-backend-4cga.onrender.com/chatbot/get/bots",
         { withCredentials: true }
       );
 

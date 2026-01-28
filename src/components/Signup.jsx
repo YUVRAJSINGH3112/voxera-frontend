@@ -35,7 +35,7 @@ const Signup = () => {
         console.log(formData);
         try {
             const res = await axios.post(
-                "http://localhost:8000/auth/register",
+                "https://voxera-backend-4cga.onrender.com/auth/register",
                 formData,
                 { withCredentials: true } 
             );
