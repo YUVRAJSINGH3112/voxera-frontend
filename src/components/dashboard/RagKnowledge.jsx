@@ -28,7 +28,11 @@ const RagKnowledge = () => {
           botType,
           knowledgeBase: text,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
       refreshAuth();
       navigate("/dashboard/bot-created", {
